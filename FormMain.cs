@@ -109,7 +109,7 @@ namespace CameraControllWindowsFormCSharp
             if (m_isDeviceExist)
             {
                 m_videoSource = new VideoCaptureDevice(m_videoDevices[cmbCamera.SelectedIndex].MonikerString);
-                m_videoSource.NewFrame += new NewFrameEventHandler(videoRendering);
+                m_videoSource.NewFrame += new NewFrameEventHandler(VideoRendering);
                 CloseVideoSource();
 
                 m_videoSource.Start();
@@ -131,7 +131,7 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
-        private void videoRendering(object sender, NewFrameEventArgs eventArgs)
+        private void VideoRendering(object sender, NewFrameEventArgs eventArgs)
         {
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
             pictureBox.Image = bitmap;
