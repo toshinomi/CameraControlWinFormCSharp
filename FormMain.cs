@@ -56,6 +56,7 @@ namespace CameraControllWindowsFormCSharp
             DialogResult result = MessageBox.Show("Close the application ?", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
             if (result == DialogResult.OK)
             {
+                OnClickBtnStop(null, null);
                 this.Close();
             }
 
