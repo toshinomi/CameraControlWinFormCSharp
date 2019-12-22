@@ -110,8 +110,6 @@ namespace CameraControllWindowsFormCSharp
         /// <summary>
         /// カメラ情報取得
         /// </summary>
-        /// <param name="sender">オブジェクト</param>
-        /// <param name="e">イベントのデータ</param>
         private void GetCameraInfo()
         {
             try
