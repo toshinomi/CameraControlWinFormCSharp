@@ -12,6 +12,9 @@ using System.Windows.Forms;
 
 namespace CameraControllWindowsFormCSharp
 {
+    /// <summary>
+    /// MainFormのロジック
+    /// </summary>
     public partial class FormMain : Form
     {
         private Point m_mousePoint;
@@ -19,7 +22,9 @@ namespace CameraControllWindowsFormCSharp
         private FilterInfoCollection m_videoDevices;
         private VideoCaptureDevice m_videoSource = null;
 
-
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
         public FormMain()
         {
             InitializeComponent();
@@ -30,6 +35,11 @@ namespace CameraControllWindowsFormCSharp
             GetCameraInfo();
         }
 
+        /// <summary>
+        /// タイトルバーマウスダウンのクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnMouseDownLblTitle(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
@@ -40,6 +50,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// タイトルバーマウスムーブのクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnMouseMoveLblTitle(object sender, MouseEventArgs e)
         {
             if ((e.Button & MouseButtons.Left) == MouseButtons.Left)
@@ -51,6 +66,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// 閉じるボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnClickBtnClose(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Close the application ?", "Question", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
@@ -63,6 +83,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// 最小化ボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnClickBtnMinimizedIcon(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -70,6 +95,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// カメラ情報取得のクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnClickBtnGetCameraInfo(object sender, EventArgs e)
         {
             GetCameraInfo();
@@ -77,6 +107,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// カメラ情報取得
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void GetCameraInfo()
         {
             try
@@ -105,6 +140,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// スタートボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnClickBtnStart(object sender, EventArgs e)
         {
             if (m_isDeviceExist)
@@ -119,6 +159,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// ストップボタンのクリックイベント
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="e">イベントのデータ</param>
         private void OnClickBtnStop(object sender, EventArgs e)
         {
             if (m_videoSource != null)
@@ -132,6 +177,11 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// ビデオ描画
+        /// </summary>
+        /// <param name="sender">オブジェクト</param>
+        /// <param name="eventArgs">NewFrameEventのデータ</param>
         private void VideoRendering(object sender, NewFrameEventArgs eventArgs)
         {
             Bitmap bitmap = (Bitmap)eventArgs.Frame.Clone();
@@ -140,6 +190,9 @@ namespace CameraControllWindowsFormCSharp
             return;
         }
 
+        /// <summary>
+        /// ビデオリソースの終了
+        /// </summary>
         private void CloseVideoSource()
         {
             if (m_videoSource != null)
